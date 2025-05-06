@@ -1,0 +1,19 @@
+[project]
+name = "we-move"
+version = "0.0.1"
+description = "A platform for crowdfunding projects."
+dependencies = [
+    "flask",
+]
+
+[build-system]
+requires = ["flit_core<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.coverage.run]
+branch = true
+source = ["app"]
