@@ -29,31 +29,6 @@ This web application is designed to support **WeMove**, a nonprofit focused on c
 
 This project aims to build a robust, scalable application to allow WeMove to more effectively engage users and manage their campaigns, donations, and user interactions.
 
-Here is the stucture of the project (enlarge your window if necessary, to cleanly show the filestructure):
-<pre>
-  <code>
-  wemove/
-    ├── app/
-    │   ├── __init__.py                # Initialize the Flask app and blueprints
-    │   ├── campaign/                  # Blueprint for campaigns
-    │   │   ├── __init__.py            # Initialize the campaign blueprint
-    │   ├── user/                      # Blueprint for user management
-    │   │   ├── __init__.py            # Initialize the user blueprint
-    │   ├── donation/                  # Blueprint for donations
-    │   │   ├── __init__.py            # Initialize the donation blueprint
-    │   │  
-    │   └── templates/                 # HTML templates
-    │       ├── base.html              # Base layout template
-    │       ├── components/             # Reusable components (navbar, user dropdown,etc.)
-    │       └── ...                    # Other templates for user, campaign, donation
-    ├── config.py                      # Configuration file for app settings (e.g., database URI, debug mode)
-    ├── requirements.txt               # Python dependencies
-    └── README.md                      # Project documentation
-
-  </code>
-</pre>
-
-
 ## Cloning the Repository
 
 To get started with the application, clone the repository to your local machine using the following command:
@@ -112,10 +87,17 @@ If you don't want to use Docker, the following steps should get you started:
     ```
     flask init-db
     ```
+4. **Create secret key**
+   Part of the application (the flash messaging system, to be precise) requires a secret key value.
 
-## Running the Application Locally (no Docker)
+   The key can be anything. Here's a command to generate a key (assuming you have Python on your machine):
+   ```bash
+    python -c "import secrets; print(secrets.token_hex(16))"
+   ```
 
-1. **Start the Flask Application**
+   Copy the `.env.sample` file to `.env` and add your secret key to the end of `FLASK_SECRET_KEY=`
+
+5. **Start the Flask Application**
 
    To start the Flask application, use the following command:
 
@@ -123,7 +105,7 @@ If you don't want to use Docker, the following steps should get you started:
 
    This will start the development server at `http://127.0.0.1:5000/`.
 
-2. **Access the Application**
+6. **Access the Application**
 
    Open a web browser and navigate to `http://127.0.0.1:5000/` to interact with the application.
 
@@ -131,9 +113,9 @@ If you don't want to use Docker, the following steps should get you started:
 
 ## Running Tests
 
-To run the tests for the application, you can use the following command:
+Basic test coverage is provided. Run the tests locally, ie not in Docker. To run the tests, use the following command at the project root:
 
-`pytest`
+`pytest tests/`
 
 This will run the tests for the application.
 
