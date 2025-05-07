@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from app.database.db import get_db
+from app.database.queries import users
 
 bp = Blueprint('users', __name__)
 
@@ -7,15 +8,15 @@ bp = Blueprint('users', __name__)
 @bp.route('/', endpoint='user_list')
 def get_users():
     db = get_db()
-    users = db.execute('SELECT * FROM users').fetchall()
-    return render_template('users/list.html', users=users)
+    user_results = db.execute(users.GET_ALL_USERS).fetchall()
+    return render_template('users/list.html', users=user_results)
 
 # Route for viewing a single user's detail
 @bp.route('/<int:user_id>', endpoint='user_detail')
 def get_user(user_id):
     db = get_db()
-    user = db.execute('SELECT * FROM users WHERE id = ?', (user_id,)).fetchone()
-    return render_template('users/detail.html', user=user)
+    user_result = db.execute(users.GET_USER_BY_ID, (user_id,)).fetchone()
+    return render_template('users/detail.html', user=user_result)
 
 # Route for creating a new user
 @bp.route('/create', methods=['GET', 'POST'], endpoint='user_create')
@@ -26,7 +27,7 @@ def create_user():
         password_hash = request.form['password']
 
         db = get_db()
-        db.execute('INSERT INTO users (name, email, password_hash) VALUES (?, ?, ?)',
+        db.execute(users.INSERT_INTO_USERS,
                    (name, email, password_hash))
         db.commit()
 
@@ -39,31 +40,32 @@ def create_user():
 @bp.route('/<int:user_id>/edit', methods=['GET', 'POST'], endpoint='user_edit')
 def edit_user(user_id):
     db = get_db()
-    user = db.execute('SELECT * FROM users WHERE id = ?', (user_id,)).fetchone()
+    user_result = db.execute(users.GET_USER_BY_ID, (user_id,)).fetchone()
 
     if request.method == 'POST':
         name = request.form['username']
         email = request.form['email']
 
-        db.execute('UPDATE users SET name = ?, email = ? WHERE id = ?',
+        db.execute(users.UPDATE_USER_BY_ID_NO_PASSWORD,
                    (name, email, user_id))
         db.commit()
 
         flash('User updated successfully.')
         return redirect(url_for('users.user_list'))
 
-    return render_template('users/edit.html', user=user)
+    return render_template('users/edit.html', user=user_result)
 
 # Route for deleting a user
 @bp.route('/<int:user_id>/delete', methods=['GET', 'POST'], endpoint='user_delete')
 def delete_user(user_id):
     db = get_db()
-    user = db.execute('SELECT * FROM users WHERE id = ?', (user_id,)).fetchone()
+    user_result = db.execute(users.GET_USER_BY_ID, (user_id,)).fetchone()
 
     if request.method == 'POST':
-        db.execute('DELETE FROM users WHERE id = ?', (user_id,))
+        db.execute(users.DELETE_USER_BY_ID, (user_id,))
         db.commit()
         flash('User deleted successfully.')
         return redirect(url_for('users.user_list'))
 
-    return render_template('users/delete.html', user=user)
+    # ???
+    return render_template('users/delete.html', user=user_result)
