@@ -1,3 +1,5 @@
+-- sqlite3 instance/we-move.sqlite "SELECT * FROM table_name;"
+
 -- Drop tables if they exist
 DROP TABLE IF EXISTS donations;
 DROP TABLE IF EXISTS campaigns;

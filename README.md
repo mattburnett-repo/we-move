@@ -7,22 +7,20 @@ This web application is designed to support **WeMove**, a nonprofit focused on c
 ## Key Features
 
 1. **Campaign Management**: Users can create and manage campaigns, track their progress, and engage with updates.
-2. **User Management**: User registration, login, and profile management features.
+2. **User Management**: User registration and profile management features.
 3. **Donation System**: Secure donation collection for campaigns with tracking and receipts.
-4. **Multi-step Forms**: Interactive, multi-step forms for collecting user input (e.g., campaign creation, donation process).
-5. **AJAX Integration**: AJAX-based interactions for smooth and responsive user experiences without full page reloads.
-6. **Database**: We will use **SQL Lite** as the relational database for storing data. SQL queries will be written directly, and no ORM will be used.
-7. **Blueprints**: The app will be organized using blueprints, with three main ones:
+4. **Database**: We will use **SQL Lite** as the relational database for storing data. SQL queries will be written directly, and no ORM will be used.
+5. **Blueprints**: The app will be organized using blueprints, with three main ones:
    - **Campaign**: Manages the campaign creation and management.
    - **User**: Handles user authentication, registration, and profile management.
    - **Donation**: Manages donation tracking and financial interactions.
-8. **Tailwind CSS**: For a clean, modern design, replacing traditional CSS frameworks like Bootstrap. Tailwind is sourced from a CDN, and is not installed locally for this project.
+6. **Tailwind CSS**: For a clean, modern design, replacing traditional CSS frameworks like Bootstrap. Tailwind is sourced from a CDN, and is not installed locally for this project.
 
 ## Technical Overview
 
 - **Backend**: Built with Python and Flask.
 - **Database**: **SQL Lite** will be used to store and manage data. All SQL queries will be written directly without the use of an ORM.
-- **Frontend**: HTML, CSS (Tailwind CSS), and JavaScript (AJAX).
+- **Frontend**: HTML, CSS (Tailwind CSS).
 - **Testing**: The application will have tests to ensure functionality and stability.
 - **Blueprints**: Organized into three main blueprints:
   1. **Campaign**: Handles the campaign logic.
@@ -39,18 +37,14 @@ Here is the stucture of the project (enlarge your window if necessary, to cleanl
     │   ├── __init__.py                # Initialize the Flask app and blueprints
     │   ├── campaign/                  # Blueprint for campaigns
     │   │   ├── __init__.py            # Initialize the campaign blueprint
-    │   │   ├── routes.py              # Routes for campaign functionality
-    │   │   └── forms.py               # Forms for campaign-related actions (like creation)
     │   ├── user/                      # Blueprint for user management
     │   │   ├── __init__.py            # Initialize the user blueprint
-    │   │   ├── routes.py              # Routes for user authentication and profiles
-    │   │   └── forms.py               # Forms for user login, registration, etc.
     │   ├── donation/                  # Blueprint for donations
     │   │   ├── __init__.py            # Initialize the donation blueprint
-    │   │   ├── routes.py              # Routes for donation functionality
-    │   │   └── forms.py               # Forms related to donation processing
+    │   │  
     │   └── templates/                 # HTML templates
-    │       ├── layout.html            # Base layout template
+    │       ├── base.html              # Base layout template
+    │       ├── components/             # Reusable components (navbar, user dropdown,etc.)
     │       └── ...                    # Other templates for user, campaign, donation
     ├── config.py                      # Configuration file for app settings (e.g., database URI, debug mode)
     ├── requirements.txt               # Python dependencies
@@ -59,25 +53,36 @@ Here is the stucture of the project (enlarge your window if necessary, to cleanl
   </code>
 </pre>
 
-## Prerequisites
-
-Before starting the application, make sure you have the following installed:
-
-- Python 3.8 or higher
-- SQL Lite
-- pip (Python package installer)
-- git (for cloning the repository)
 
 ## Cloning the Repository
 
 To get started with the application, clone the repository to your local machine using the following command:
 
 ```bash
-git clone https://github.com/yourusername/wemove.git
+git clone https://github.com/mattburnett-repo/we-move.git
 cd wemove
 ```
+## Running the app in Docker
 
-## Setting Up the Environment
+  Once the repository has been cloned, you can start the app simply by using the provided Docker containment.
+
+  At the project root, run
+
+  ```bash
+  docker compose up --build
+  ```
+  This will build and start the app. Once the build and start is finished, you should be able to see the app at
+
+  ```bash
+  http://localhost:5000
+  ```
+  or
+  ```
+  http://127.0.0.1:5000
+  ```
+
+## Running Locally / Setting Up the Environment
+If you don't want to use Docker, the following steps should get you started:
 
 1. **Create a Virtual Environment**
 
@@ -100,13 +105,15 @@ cd wemove
 
 3. **Set Up the Database**
 
-   Create a SQL Lite database for the application and set up the necessary tables. `init-db` is a Click command that creates the database and populates the tables with sample data.
+   This demo app ships with a SQLite3 database (we-move.sqlite), located in the `instances` folder.
+   
+   However, you can create a new database, set up the necessary tables, and populate the database with sample data. This is useful if you have been working with the app and want to start the database over fresh. Run `flask init-db` in a terminal `init-db` is a Click command that creates the database and populates the tables with sample data.
 
     ```
     flask init-db
     ```
 
-## Running the Application
+## Running the Application Locally (no Docker)
 
 1. **Start the Flask Application**
 

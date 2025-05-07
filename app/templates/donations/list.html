@@ -1,14 +1,29 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 {% block body %}
-    <h1 class="text-2xl font-bold text-center">Donations</h1>
-    <div class="mt-4 space-y-4">
+<div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+    <h1 class="text-3xl font-semibold text-gray-900">Donations</h1>
+    <ul class="space-y-4">
         {% for donation in donations %}
-            <div class="border p-4 rounded-lg">
-                <h2 class="text-xl">{{ donation.donor_name }} - ${{ donation.amount }}</h2>
-                <p class="text-sm text-gray-500">Donated on: {{ donation.donated_at }}</p>
-                <a href="{{ url_for('donations.donation_detail', donation_id=donation.id) }}" class="text-blue-500 hover:underline">View Details</a>
-            </div>
+            <li class="bg-white shadow rounded-lg p-4 flex justify-between items-start">
+                <div>
+                    <p class="text-lg font-bold text-gray-800">${{ donation['amount'] }}</p>
+                    <p class="text-gray-600">Campaign: {{ donation['campaign_title'] }}</p>
+                    <p class="text-gray-500">Donor: {{ donation['donor_name'] }}</p>
+                    <p class="text-gray-400 text-sm">Date: {{ donation['created_at'] }}</p>
+                </div>
+                 <!-- Right: Buttons -->
+                <div class="flex flex-col space-y-2 ml-4">
+                    <a href="{{ url_for('donations.donation_edit', donation_id=donation['id']) }}" class="bg-yellow-400 hover:bg-yellow-500 text-white px-4 py-2 rounded-md text-center">Edit</a>
+                    <form action="{{ url_for('donations.donation_delete', donation_id=donation['id']) }}" method="POST" onsubmit="return confirm('Delete this donation?')">
+                        <button type="submit" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md w-full">Delete</button>
+                    </form>
+                </div>
+            </li>
         {% endfor %}
-    </div>
+    </ul>
+</div>
+<div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+    <a href="{{ url_for('donations.donation_create') }}" class="bg-blue-500 text-white px-4 py-2 rounded-md">Add Donation</a>
+</div>
 {% endblock %}

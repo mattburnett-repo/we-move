@@ -26,5 +26,4 @@ COPY . .
 EXPOSE 5000
 
 # Run the app (adjust if needed)
-# CMD ["flask", "run", "--debug", "--host=0.0.0.0"]
 CMD ["python", "-m", "flask", "run", "--host=0.0.0.0", "--port=5000"]

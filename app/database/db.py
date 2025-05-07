@@ -1,3 +1,5 @@
+# sqlite3 instance/we-move.sqlite "SELECT * FROM table_name;"
+
 import sqlite3
 from datetime import datetime
 
