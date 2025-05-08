@@ -1,5 +1,3 @@
-# sqlite3 instance/we-move.sqlite "SELECT * FROM table_name;"
-
 import sqlite3
 from datetime import datetime
 
@@ -31,7 +29,7 @@ def init_db():
     with current_app.open_resource('./database/schema.sql') as f:
         db.executescript(f.read().decode('utf8'))
 
-    # Insert test data
+    # Insert sample data
     with current_app.open_resource('./database/sample-data.sql') as f:
         db.executescript(f.read().decode('utf8'))
 

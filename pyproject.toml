@@ -1,7 +1,7 @@
 [project]
 name = "we-move"
 version = "0.0.1"
-description = "A platform for crowdfunding projects."
+description = "A demo app for crowdfunding projects."
 dependencies = [
     "flask",
 ]

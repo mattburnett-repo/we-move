@@ -14,8 +14,6 @@ GET_DONATION_TOTALS_BY_CAMPAIGN = """
     ORDER BY total_amount DESC;
 """
 
-# fix user/donor id missing on donations table
-# schema and sample data, as well as test data
 GET_DONATION_TOTALS_BY_USER = """
     SELECT COUNT(d.amount) AS total_donations, SUM(d.amount) AS total_amount, u.name AS user_name, c.title AS campaign_title
     FROM donations d

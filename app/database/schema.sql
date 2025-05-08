@@ -1,5 +1,3 @@
--- sqlite3 instance/we-move.sqlite "SELECT * FROM table_name;"
-
 -- Drop tables if they exist
 DROP TABLE IF EXISTS donations;
 DROP TABLE IF EXISTS campaigns;
@@ -31,7 +29,6 @@ CREATE TABLE campaigns (
 CREATE TABLE donations (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     campaign_id INTEGER NOT NULL,
-    -- donor_name TEXT,
     donor_id INTEGER NOT NULL,
     amount REAL NOT NULL CHECK (amount > 0),
     donated_at TEXT DEFAULT CURRENT_TIMESTAMP,

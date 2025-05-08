@@ -11,7 +11,6 @@ GET_USER_BY_ID = """
     ORDER BY total_amount DESC;
 """
 
-# Number of campaigns each user has donated to
 GET_ALL_USERS_WITH_CAMPAIGNS_AND_DONATIONS = """
     SELECT u.*, COUNT(d.amount) AS total_donations, SUM(d.amount) AS total_amount
     FROM users u

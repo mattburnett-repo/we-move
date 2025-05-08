@@ -84,6 +84,7 @@ If you don't want to use Docker, the following steps should get you started:
     ```
 
 2. **Create Secret Key**
+   
    Make sure you created the key as described the previous section, above.
 
 3. **Install Python Dependencies**
@@ -97,7 +98,7 @@ If you don't want to use Docker, the following steps should get you started:
 
 3. **Set Up the Database**
 
-   This demo app ships with a SQLite3 database (we-move.sqlite), located in the `instances` folder.
+   This demo app ships with a SQLite3 database (we-move.sqlite), located in the `instances` folder. It contains some sample data to get you started.
    
    However, you can create a new database, set up the necessary tables, and populate the database with sample data. This is useful if you have been working with the app and want to start the database over fresh. Run `flask init-db` in a terminal `init-db` is a Click command that creates the database and populates the tables with sample data.
 
