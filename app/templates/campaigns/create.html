@@ -40,13 +40,9 @@
         {% include "components/_user_dropdown.html" %}
       </div>
 
-      <div class="py-2">
-        <button 
-          type="submit" 
-          class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-        >
-          Create
-        </button>
+      <div class="flex justify-between items-center">
+        <a href="{{ url_for('campaigns.campaign_list') }}" class="text-blue-600 hover:underline">← Cancel</a>
+        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Create</button>
       </div>
     </form>
   </div>

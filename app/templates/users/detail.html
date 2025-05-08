@@ -1,13 +1,17 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-    <h1 class="text-3xl font-semibold text-gray-900">User Details</h1>
-    <div class="mt-4">
-        <h2 class="text-xl">Username: {{ user.username }}</h2>
+<div class="max-w-4xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+    <h1 class="text-3xl font-semibold text-gray-900 mb-6 text-center">User Details</h1>
+     <div class="bg-white shadow rounded-lg p-6 space-y-4">
+        <h2 class="text-xl">Username: {{ user.name }}</h2>
         <p class="text-sm text-gray-500">Email: {{ user.email }}</p>
+        <p class="text-sm text-gray-500">Total Donations: {{ user.total_donations }}</p>
+        <p class="text-sm text-gray-500">Total Amount: {{ user.total_amount }}</p>
         <p class="mt-4">Created at: {{ user.created_at }}</p>
-        <a href="{{ url_for('users.user_list') }}" class="text-blue-500 hover:underline mt-4">Back to Users</a>
+    </div>
+        <div class="mt-6 text-center">
+        <a href="{{ url_for('users.user_list') }}" class="text-blue-500 hover:underline mt-4">← Back to Users</a>
     </div>
 </div>
 {% endblock %}

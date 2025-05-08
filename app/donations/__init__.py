@@ -27,11 +27,11 @@ def create_donation():
 
     if request.method == 'POST':
         amount = request.form['amount']
-        # user_id = request.form['user_id']
+        donor_id = request.form['user_id']
         campaign_id = request.form['campaign_id']
         db.execute(
             donations.INSERT_INTO_DONATIONS,
-            (amount, campaign_id)
+            (amount, donor_id, campaign_id)
         )
         db.commit()
         flash('Donation created successfully.')
@@ -50,8 +50,9 @@ def edit_donation(donation_id):
     if request.method == 'POST':
         amount = request.form['amount']
         campaign_id = request.form['campaign_id']
+        donor_id = request.form['donor_id']
         db.execute(donations.UPDATE_DONATION_BY_ID,
-            (amount, campaign_id, donation_id)
+            (amount, campaign_id, donor_id, donation_id)
         )
         db.commit()
         flash('Donation updated successfully.')

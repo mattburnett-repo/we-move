@@ -1,8 +1,18 @@
+# Add count() and sum() of donation info
+# GET_ALL_CAMPAIGNS = """
+#     SELECT c.*, u.name FROM campaigns c 
+#     JOIN users u ON c.user_id = u.id
+# """
 GET_ALL_CAMPAIGNS = """
-    SELECT c.*, u.name FROM campaigns c 
+  SELECT c.goal_amount, COUNT(d.amount) AS total_donations, SUM(d.amount) AS total_amount, c.id , c.title, u.name 
+    FROM donations d
+    RIGHT JOIN campaigns c ON d.campaign_id = c.id
     JOIN users u ON c.user_id = u.id
+    GROUP BY c.id
+    ORDER BY total_amount DESC;
 """
 
+# Add count() and sum() of donation info
 GET_CAMPAIGN_BY_ID = """
     SELECT c.*, u.name FROM campaigns c 
     JOIN users u ON c.user_id = u.id 

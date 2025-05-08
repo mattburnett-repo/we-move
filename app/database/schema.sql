@@ -31,8 +31,10 @@ CREATE TABLE campaigns (
 CREATE TABLE donations (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     campaign_id INTEGER NOT NULL,
-    donor_name TEXT,
+    -- donor_name TEXT,
+    donor_id INTEGER NOT NULL,
     amount REAL NOT NULL CHECK (amount > 0),
     donated_at TEXT DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (campaign_id) REFERENCES campaigns(id) ON DELETE CASCADE
+    FOREIGN KEY (donor_id) REFERENCES users(id) ON DELETE CASCADE
 );

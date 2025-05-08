@@ -1,9 +1,23 @@
 GET_ALL_USERS = """
-    SELECT id, name FROM users
+    SELECT * FROM users
 """
 
 GET_USER_BY_ID = """
-    SELECT id, name FROM users WHERE id = ?
+    SELECT u.*, COUNT(d.amount) AS total_donations, SUM(d.amount) AS total_amount
+    FROM users u
+    LEFT JOIN donations d ON u.id = d.donor_id
+    WHERE u.id = ?
+    GROUP BY u.id
+    ORDER BY total_amount DESC;
+"""
+
+# Number of campaigns each user has donated to
+GET_ALL_USERS_WITH_CAMPAIGNS_AND_DONATIONS = """
+    SELECT u.*, COUNT(d.amount) AS total_donations, SUM(d.amount) AS total_amount
+    FROM users u
+    LEFT JOIN donations d ON u.id = d.donor_id
+    GROUP BY u.id
+    ORDER BY total_amount DESC;
 """
 
 INSERT_INTO_USERS = """

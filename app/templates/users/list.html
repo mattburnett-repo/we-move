@@ -6,13 +6,14 @@
     <ul class="space-y-4">
         {% for user in users %}
             <li class="bg-white shadow rounded-lg p-4 flex justify-between items-center">
-                <div>
+                <div class="space-y-1">
                     <h2 class="text-xl font-bold text-gray-800">
                         <a href="{{ url_for('users.user_detail', user_id=user.id) }}">
                             {{ user.name }}
                         </a>
                     </h2>
-                    <p class="text-sm text-gray-500">{{ user.email }}</p>
+                    <p class="text-gray-600">{{ user.email }}</p>
+                    <p class="text-gray-500">Total Donations: {{ user.total_donations }} | Total Amount: {{ user.total_amount }}</p>
                 </div>
 <!-- Right: Buttons -->
               <div class="flex flex-col space-y-2 ml-4">

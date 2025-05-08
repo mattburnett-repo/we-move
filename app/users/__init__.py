@@ -8,7 +8,7 @@ bp = Blueprint('users', __name__)
 @bp.route('/', endpoint='user_list')
 def get_users():
     db = get_db()
-    user_results = db.execute(users.GET_ALL_USERS).fetchall()
+    user_results = db.execute(users.GET_ALL_USERS_WITH_CAMPAIGNS_AND_DONATIONS).fetchall()
     return render_template('users/list.html', users=user_results)
 
 # Route for viewing a single user's detail
