@@ -9,18 +9,13 @@ This demo web application is proof-of-concept for **WeMove**, a nonprofit focuse
 1. **Campaign Management**: Users can create and report campaigns.
 2. **User Management**: User registration and profile management features.
 3. **Donation System**: Report donations from users to campaigns.
-4. **Database**: SQL queries are written directly. No ORM is used.
-5. **Blueprints**: The app is organized using blueprints, with three main ones:
-   - **Campaign**: Manages the campaign creation and management.
-   - **User**: Handles user authentication, registration, and profile management.
-   - **Donation**: Manages donation tracking and financial interactions.
-6. **Tailwind CSS**: Sourced from a CDN, and is not installed locally for this project.
-
+  
 ## Technical Overview
 
 - **Backend**: Built with Python and Flask.
 - **Database**: **SQL Lite** is used to store and manage data. All SQL queries will be written directly without the use of an ORM. All SQL queries are stored in `database/queries` files and are imported as needed.
 - **Frontend**: HTML, CSS / Tailwind, Jinja templating engine.
+- **Tailwind CSS**: Sourced from a CDN, and is not installed locally for this project.
 - **Blueprints**: Organized into three main blueprints:
   1. **Campaign**: Handles the campaign logic.
   2. **User**: Manages user accounts and profiles.
@@ -61,7 +56,7 @@ cd wemove
   ```bash
   docker compose up --build
   ```
-  This will build and start the app. Once the build and start is finished, you should be able to see the app at
+  This will build and start the app. Once the build and start are finished, you should be able to see the app at
 
   ```bash
   http://localhost:5000 or http://127.0.0.1:5000
