@@ -1,4 +1,4 @@
-# WeMove Demo Web Application
+# WeMove Demo Flask Application
 
 ## Project Overview
 
@@ -9,18 +9,18 @@ This demo web application is proof-of-concept for **WeMove**, a nonprofit focuse
 1. **Campaign Management**: Users can create and report campaigns.
 2. **User Management**: User registration and profile management features.
 3. **Donation System**: Report donations from users to campaigns.
-4. **Database**: **SQL Lite** is the relational database for storing data. SQL queries will be written directly, and no ORM will be used.
-5. **Blueprints**: The app will be organized using blueprints, with three main ones:
+4. **Database**: SQL queries are written directly. No ORM is used.
+5. **Blueprints**: The app is organized using blueprints, with three main ones:
    - **Campaign**: Manages the campaign creation and management.
    - **User**: Handles user authentication, registration, and profile management.
    - **Donation**: Manages donation tracking and financial interactions.
-6. **Tailwind CSS**: For a clean, modern design, replacing traditional CSS frameworks like Bootstrap. Tailwind is sourced from a CDN, and is not installed locally for this project.
+6. **Tailwind CSS**: Sourced from a CDN, and is not installed locally for this project.
 
 ## Technical Overview
 
 - **Backend**: Built with Python and Flask.
 - **Database**: **SQL Lite** is used to store and manage data. All SQL queries will be written directly without the use of an ORM. All SQL queries are stored in `database/queries` files and are imported as needed.
-- **Frontend**: HTML, CSS (Tailwind CSS).
+- **Frontend**: HTML, CSS / Tailwind, Jinja templating engine.
 - **Blueprints**: Organized into three main blueprints:
   1. **Campaign**: Handles the campaign logic.
   2. **User**: Manages user accounts and profiles.
@@ -37,7 +37,7 @@ git clone https://github.com/mattburnett-repo/we-move.git
 cd wemove
 ```
 ## Create secret key
-   Part of the application (the flash messaging system, to be precise) requires a secret key value.
+   Part of the application (the flash messaging system) requires a secret key value.
 
    The key can be anything. Here's a command to generate a key (assuming you have Python on your machine):
    ```bash
@@ -64,11 +64,7 @@ cd wemove
   This will build and start the app. Once the build and start is finished, you should be able to see the app at
 
   ```bash
-  http://localhost:5000
-  ```
-  or
-  ```
-  http://127.0.0.1:5000
+  http://localhost:5000 or http://127.0.0.1:5000
   ```
 
 ## Running Locally / Setting Up the Environment
@@ -103,21 +99,23 @@ If you don't want to use Docker, the following steps should get you started:
    However, you can create a new database, set up the necessary tables, and populate the database with sample data. This is useful if you have been working with the app and want to start the database over fresh. Run `flask init-db` in a terminal `init-db` is a Click command that creates the database and populates the tables with sample data.
 
     ```
-    flask init-db
+    (venv) flask init-db
     ```
 
 5. **Start the Flask Application**
 
    To start the Flask application, use the following command:
 
-   `flask run`
+   (venv) `flask run`
 
    This will start the development server at `http://127.0.0.1:5000/`.
 
 ## To Do / Nice To Have:
 - A more robust deployment process would benefit from tests. 
+  - Not sure of the best way to isolate/test API, since it's closely bound to tempaltes.
+  - Playwright, or something similar, for UI tests.
 - AJAX for frontend interaction with the API.
   
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License.
