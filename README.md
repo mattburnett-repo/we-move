@@ -91,7 +91,9 @@ If you don't want to use Docker, the following steps should get you started:
 
    This demo app ships with a SQLite3 database (we-move.sqlite), located in the `instances` folder. It contains some sample data to get you started.
    
-   However, you can create a new database, set up the necessary tables, and populate the database with sample data. This is useful if you have been working with the app and want to start the database over fresh. Run `flask init-db` in a terminal `init-db` is a Click command that creates the database and populates the tables with sample data.
+   However, you can create a new database, set up the necessary tables, and populate the database with sample data. This is useful if you have been working with the app and want to start the database over fresh. Run `flask init-db` in a terminal. 
+   
+   `init-db` is a Click command that creates the database and populates the tables with sample data.
 
     ```
     (venv) flask init-db
@@ -107,7 +109,7 @@ If you don't want to use Docker, the following steps should get you started:
 
 ## To Do / Nice To Have:
 - A more robust deployment process would benefit from tests. 
-  - Not sure of the best way to isolate/test API, since it's closely bound to tempaltes.
+  - Not sure of the best way to isolate/test API, since it's closely bound to templates.
   - Playwright, or something similar, for UI tests.
 - AJAX for frontend interaction with the API.
   
