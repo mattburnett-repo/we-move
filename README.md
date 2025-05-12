@@ -69,9 +69,9 @@ If you don't want to use Docker, the following steps should get you started:
 
    It's recommended to use a virtual environment for managing dependencies. Run the following commands to create and activate a virtual environment:
 
-    ```
+    ```bash
     python -m venv venv
-    source venv/bin/activate # On Windows, use venv\Scripts\activate
+    source venv/bin/activate    # On Windows, use venv\Scripts\activate
     ```
 
 2. **Create Secret Key**
