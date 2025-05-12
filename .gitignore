@@ -2,3 +2,4 @@ venv/
 *.pyc
 *.code-workspace
 .env
+!.env.example

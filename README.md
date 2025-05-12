@@ -29,7 +29,7 @@ To get started with the application, clone the repository to your local machine 
 
 ```bash
 git clone https://github.com/mattburnett-repo/we-move.git
-cd wemove
+cd we-move
 ```
 ## Create secret key
    Part of the application (the flash messaging system) requires a secret key value.
